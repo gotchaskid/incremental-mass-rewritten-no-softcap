@@ -170,7 +170,7 @@ const FORMS = {
         return x
     },
     massSoftGain() {
-        if (player.ranks.hex.gte(6)) return EINF
+        return EINF
         let s = E(1.5e156)
         if (CHALS.inChal(3) || CHALS.inChal(10) || FERMIONS.onActive("03")) s = s.div(1e150)
         if (CHALS.inChal(4) || CHALS.inChal(10) || FERMIONS.onActive("03")) s = s.div(1e100)
@@ -188,7 +188,7 @@ const FORMS = {
         return E(1).div(p.add(1))
     },
     massSoftGain2() {
-        if (player.ranks.hex.gte(10)) return EINF
+        return EINF
         let s = E('1.5e1000056')
         if (hasTree("m2")) s = s.pow(1.5)
         if (hasTree("m2")) s = s.pow(tmp.supernova.tree_eff.m3)
@@ -205,7 +205,7 @@ const FORMS = {
         return p
     },
     massSoftGain3() {
-        if (player.ranks.hex.gte(13)) return EINF
+        return EINF
         let s = player.qu.rip.active || tmp.c16active || inDarkRun() ? uni("ee7") : uni("ee8")
         if (hasTree("m3")) s = s.pow(tmp.supernova.tree_eff.m3)
         s = s.pow(tmp.radiation.bs.eff[2])
@@ -218,7 +218,7 @@ const FORMS = {
         return p
     },
     massSoftGain4() {
-        if (player.ranks.hex.gte(17)) return EINF
+        return EINF
         let s = mlt(player.qu.rip.active || tmp.c16active || inDarkRun() ? 0.1 : 1e4)
         if (player.ranks.pent.gte(8)) s = s.pow(RANKS.effect.pent[8]())
         if (hasTree('qc1')) s = s.pow(treeEff('qc1'))
@@ -232,7 +232,7 @@ const FORMS = {
         return p
     },
     massSoftGain5() {
-        if (player.ranks.hex.gte(36)) return EINF
+        return EINF
         let s = mlt(player.qu.rip.active || tmp.c16active || inDarkRun()?1e4:1e12)
         if (hasPrestige(0,8)) s = s.pow(prestigeEff(0,8))
         if (hasUpgrade("br",12)) s = s.pow(upgEffect(4,12))
@@ -244,7 +244,7 @@ const FORMS = {
         return p
     },
     massSoftGain6() {
-        if (player.ranks.hex.gte(48)) return EINF
+        return EINF
         let s = mlt(1e22)
         s = s.pow(tmp.dark.abEff.msoftcap||1)
         return s.max(1)
@@ -254,7 +254,7 @@ const FORMS = {
         return p
     },
     massSoftGain7() {
-        if (player.ranks.hex.gte(62)) return EINF
+        return EINF
         let s = mlt(1e36)
         if (hasElement(159)) s = s.pow(tmp.dark.abEff.msoftcap||1)
         return s.max(1)
@@ -265,7 +265,7 @@ const FORMS = {
         return p
     },
     massSoftGain8() {
-        if (player.ranks.hex.gte(157)) return EINF
+        return EINF
         let s = E('ee63')
         if (hasElement(159)) s = s.pow(tmp.dark.abEff.msoftcap||1)
         return s.max(1)
@@ -531,7 +531,7 @@ const FORMS = {
             return x
         },
         fSoftStart() {
-            let x = uni("e3e9")
+            return EINF
             if (hasElement(71)) x = x.pow(tmp.elements.effect[71])
             x = x.pow(tmp.radiation.bs.eff[20])
             return x
@@ -542,7 +542,7 @@ const FORMS = {
             return x
         },
         massSoftGain() {
-            let s = E(1.5e156)
+            return EINF
             if (player.mainUpg.atom.includes(6)) s = s.mul(tmp.upgs.main?tmp.upgs.main[3][6].effect:E(1))
             return s
         },
